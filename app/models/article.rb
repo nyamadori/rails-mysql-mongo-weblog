@@ -7,6 +7,11 @@ class Article < ActiveRecord::Base
   validates :category, null: false
   before_create :create_mongo_collections
 
+  def fetch_mongo
+    self.title = Content.find(title_oid).body
+    self.body = Content.find(body_oid).body
+  end
+
   private
 
   def create_mongo_collections
