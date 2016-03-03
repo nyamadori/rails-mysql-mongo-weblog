@@ -3,6 +3,6 @@ class Content
   field :body, type: String
   field :type, type: String
 
-  validate :body, presence: true
-  validate :type, presence: true
+  validates :body, presence: true
+  validates :type, presence: true
 end
