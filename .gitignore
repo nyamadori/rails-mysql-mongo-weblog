@@ -9,7 +9,7 @@
 
 # Ignore bundler gem files
 /vendor/bundle
- 
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
@@ -17,3 +17,6 @@ i/tmp
 
 # Ignore OS X's ugly files
 *.DS_Store
+
+# Server process ID files
+*.pid
