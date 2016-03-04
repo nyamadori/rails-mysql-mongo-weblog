@@ -1,0 +1,26 @@
+<%= form_for article do |f| %>
+  <ul>
+  <% @article.errors.full_messages.each do |error_message| %>
+    <li><%= error_message %></li>
+  <% end %>
+  </ul>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.label :published_at %>
+    <%= f.datetime_select :published_at %>
+  </div>
+  <div>
+    <%= f.collection_select :category_id, Category.all, :id, :name, prompt: true %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
