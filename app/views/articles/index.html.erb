@@ -1,7 +1,6 @@
 <h1>articles#index</h1>
 <ul>
   <% @articles.each do |article| %>
-    <% article.fetch_mongo %>
     <li><%= link_to article.title, article %></li>
   <% end %>
 </ul>
