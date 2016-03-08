@@ -1,5 +1,12 @@
 <h1>articles#show</h1>
 <dl>
+  <dt>サムネイル</dt>
+  <dd>
+    <% if @article.thumbnail %>
+      <%= image_tag thumbnail_article_path(@article), width: "200px" %></dd>
+    <% else %>
+      No Image
+    <% end %>
   <dt>タイトル</dt>
   <dd><%= @article.title %></dd>
   <dt>コンテンツ</dt>

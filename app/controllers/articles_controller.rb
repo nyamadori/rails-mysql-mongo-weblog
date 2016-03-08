@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :thumbnail]
 
   # GET /articles
   # GET /articles.json
@@ -58,6 +58,15 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def thumbnail
+    content = @article.thumbnail.read
+
+    if stale?(etag: content, last_modified: @article.updated_at.utc, public: true)
+      send_data content, type: @article.thumbnail.file.content_type, disposition: "inline"
+      expires_in 0, public: true
     end
   end
 
