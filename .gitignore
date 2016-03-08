@@ -20,3 +20,6 @@ i/tmp
 
 # Server process ID files
 *.pid
+
+/tmp
+/public/tmp
