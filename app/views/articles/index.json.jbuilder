@@ -1,5 +1,4 @@
 json.array!(@articles) do |article|
-  article.fetch_mongo
   json.extract! article, :id
   json.extract! article, :title
   json.extract! article, :body
