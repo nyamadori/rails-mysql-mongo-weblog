@@ -21,6 +21,9 @@
     <%= f.collection_select :category_id, Category.all, :id, :name, prompt: true %>
   </div>
   <div>
+    <%= f.file_field :thumbnail %>
+  </div>
+  <div>
     <%= f.submit %>
   </div>
 <% end %>

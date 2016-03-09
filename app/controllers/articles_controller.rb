@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :thumbnail]
 
   # GET /articles
   # GET /articles.json
@@ -61,6 +61,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def thumbnail
+    content = @article.thumbnail.read
+
+    if stale?(etag: content, last_modified: @article.updated_at.utc, public: true)
+      send_data content, type: @article.thumbnail.file.content_type, disposition: "inline"
+      expires_in 0, public: true
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -69,6 +78,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :published_at, :category_id)
+      params.require(:article).permit(:title, :body, :published_at, :category_id, :thumbnail)
     end
 end

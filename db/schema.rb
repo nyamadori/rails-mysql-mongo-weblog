@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303211449) do
+ActiveRecord::Schema.define(version: 20160308123047) do
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title_oid",    limit: 255, null: false
-    t.string   "body_oid",     limit: 255, null: false
+    t.string   "title_oid",     limit: 255, null: false
+    t.string   "body_oid",      limit: 255, null: false
     t.datetime "published_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "category_id",  limit: 4,   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "category_id",   limit: 4,   null: false
+    t.string   "thumbnail_oid", limit: 255
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
